@@ -1,7 +1,7 @@
 let apiKey = document.querySelector("#search-api");
 let movieName = document.querySelector("#search-movie");
 let button = document.querySelector(".btn");
-let lodder = document.querySelector(".lodder");
+let loader = document.querySelector(".loader");
 let errorMessage = document.querySelector(".error-message");
 
 // adding eventListner on button
@@ -23,36 +23,50 @@ function renderMovies(){
         return;
     }
 
+
+    loader.style.display = 'block';
+    moviesDiv.innerHTML = '';
     // if apiKey and movie value is entered then fetch the movies from omdb api
 
     let apiUrl = `https://www.omdbapi.com/?s=${movieNameValue}&apikey=${apiKeyValue}`;
     fetch(apiUrl)
     .then(response => response.json())
     .then(data => {
-        data.Search.forEach(movie=>{
-            let div = document.createElement("div");
-            div.classList.add("movie");
-            div.innerHTML = `
-            <div class="image">
-                <img src="${movie.Poster}" alt="movie Image">
-            </div>
-            <div class="movie-title">
-                <h3>${movie.Title}</h3>
-            </div>
-            <div class="release-year">
-                <p>Release Year : ${movie.Year}</p>
-            </div>
-            <div class="more-details">
-                <a href="https://www.imdb.com/title/${movie.imdbID}" target="_blank">More Details</a>
-            </div>`;
-            moviesDiv.append(div);
-        })
+        loader.style.display = 'none';
+        if (data.Response === 'True'){
+            data.Search.forEach(movie=>{
+                let div = document.createElement("div");
+                div.classList.add("movie");
+                div.innerHTML = `
+                <div class="image">
+                    <img src="${movie.Poster}" alt="movie Image">
+                </div>
+                <div class="movie-title">
+                    <h3>${movie.Title}</h3>
+                </div>
+                <div class="release-year">
+                    <p>Release Year : ${movie.Year}</p>
+                </div>
+                <div class="more-details">
+                    <a href="https://www.imdb.com/title/${movie.imdbID}" target="_blank">More Details</a>
+                </div>`;
+                moviesDiv.append(div);
+            });
+        }else {
+            errorMessage.textContent = data.Error;
+            errorMessage.style.display = 'block';
+        }
+    })
+    .catch(error => {
+        loader.style.display = 'none';
+        errorMessage.textContent = `An ${error}error occurred. Please try again later.`;
+        errorMessage.style.display = 'block';
     });
-
+    clear();
 }
 
-// // function to clear the input tags
-// function clear(){
-//     apiKey.value = "";
-//     movieName.value = "";
-// }
+// function to clear the input tags
+function clear(){
+    apiKey.value = "";
+    movieName.value = "";
+}
