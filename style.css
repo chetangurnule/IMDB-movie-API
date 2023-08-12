@@ -1,5 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+
+body{
+    background-color: #242A32;
+}
+html{
+    font-size: 62.5%
+}
+/* ***************** styling main section ******************** */
+.main-section{
+    font-size: 1.6rem;
+    font-family: 'Poppins', sans-serif;
+    border: 2px solid red;
+}
+
+
+/* ********** styling error message **************** */
+
+.error-message{
+    /* border: 2px solid blue; */
+    background-color: #3A3F47;
+    width: 80%;
+    height: auto;
+    padding: 1rem 2rem;
+    margin: 2rem auto;
+    text-align: center;
+    color: red;
+    border-radius: 1rem;
+    display: none;
+}
+
+
+.main-section .main-heading{
+    margin: 2rem 0;
+    text-align: center;
+    font-size: 2.5rem;
+}
+.main-section .main-heading h1{
+    color: #242A32;
+    -webkit-text-stroke: 1px #0296E5;
+}
+.main-section .search-api,
+.main-section .search-movie{
+    width: 80%;
+    margin: 1rem auto;
+    position: relative;
+}
+.main-section .search-api img,
+.main-section .search-movie img{
+    position: absolute;
+    right: 1rem;
+    top: 15%;
+}
+.main-section .search-btn{
+    text-align: center;
+}
+.main-section .search-btn .btn{
+    width: 20%;
+    margin: 2rem 0;
+    height: 3rem;
+    background-color:#3A3F47;
+    border: none;
+    color: #75746D;
+    border: 1px solid #75746D;
+    font-size: 1.6rem;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+.main-section .search-api input[type = "text"], 
+.main-section .search-movie input[type = "text"]{
+    width: 100%;
+    height: 2rem;
+    padding: 1.5rem 2rem;
+    background-color:#3A3F47;
+    border: none;
+    border-radius: 0.5rem;
+    color: white;
+}
+
+
+/* ******************* styling loader ***************** */
+.loader{
+    width: 10rem;
+    height:10rem;
+    border: 1rem solid #3A3F47;
+    border-top: 1rem solid #242A32;
+    border-radius: 50%;
+    animation: spin 2s linear infinite;
+    margin: 10rem auto;
+    display: none;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ******************* styling movie div ****************** */
+.movies{
+    /* border: 2px solid black; */
+    width: 80%;
+    margin: 2rem auto;
+    display: flex;
+    flex-wrap: wrap;
+    /* display: none; */
+}
+.movie{
+    /* border: 2px solid red; */
+    width: 20%;
+    box-shadow: 0 1px 5px #75746D;
+    margin: 1rem 2rem;
+}
+.movie .image{
+    width: 100%;
+}
+.movie .image img{
+    width: 100%;
+    height: 25rem;
+    object-fit: center;
+    object-position: center;
+
+}
+.movie .movie-title{
+    text-align: center;
+    margin: 1rem 0;
+    color: white;
+}
+.movie .release-year{
+    text-align: center;
+    color: white;
+}
+.movie .more-details{
+    text-align: center;
+    margin: 1rem 0;
+    
+}
+.movie .more-details a{
+    text-decoration: none;
+    color: white;
 }

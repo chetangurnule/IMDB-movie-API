@@ -4,8 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IMDB Movie API</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <section class="main-section">
+
+
+        <!-- *************** handling error message *************** -->
+        <div class="error-message">
+        </div>
+
+        <!-- ******************** main-heading *************** -->
+        <div class="main-heading">
+            <h1>IMDB MOVIE APP</h1>
+        </div>
+
+
+        <!-- ********************** handling input tags with button *************** -->
+        <div class="search-api">
+            <input type="text" name="" id="search-api" placeholder="API_KEY">
+            <img src="./images/key 1.png" alt="key-image">
+        </div>
+        <div class="search-movie">
+            <input type="text" name="" id="search-movie" placeholder="Search">
+            <img src="./images/Search.png" alt="search">
+        </div>
+        <div class="search-btn">
+            <button class="btn">Search</button>
+        </div>
+
+
+        <!-- **************** loader ***************** -->
+        <div class="loader"></div>
+
+        <!-- ********************* rendering movies *************** -->
+        <div class="movies">
+            
+        </div>
+    </section>
+    <script src="./script.js"></script>
 </body>
 </html>
